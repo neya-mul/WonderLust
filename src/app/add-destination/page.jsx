@@ -12,7 +12,7 @@ export default function page() {
         const res = await fetch('http://localhost:5000/destination', {
             method: 'POST',
             headers: {
-                'content type': 'applicaion/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(destination)
         })
