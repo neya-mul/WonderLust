@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function Navbar() {
     return (
-        <nav className='flex justify-between p-5 border container mx-auto'>
+        <nav className='flex justify-between p-5 border '>
             <ul className='flex gap-4'>
                 <li>  <Link href='/'>Home</Link> </li>
                 <li>  <Link href='/destination'>Destination</Link> </li>
