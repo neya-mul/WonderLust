@@ -3,18 +3,27 @@ import { FieldError, Input, Label, TextField, Select, ListBox, TextArea, Button 
 import React from 'react'
 
 export default function page() {
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
         const destination = Object.fromEntries(formData.entries())
 
         console.log(destination);
-        
+        const res = await fetch('http://localhost:5000/destination', {
+            method: 'POST',
+            headers: {
+                'content type': 'applicaion/json'
+            },
+            body: JSON.stringify(destination)
+        })
+        const data = await res.json()
+        console.log(data);
+
     }
     return (
         <div className='max-w-8xl mx-auto'>
             <form
-            onSubmit={submit}
+                onSubmit={submit}
                 className="p-10 space-y-8  mx-auto border  my-10 rounded-2xl"
             >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
