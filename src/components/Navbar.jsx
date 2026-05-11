@@ -4,31 +4,30 @@ import React from 'react'
 
 export default function Navbar() {
     return (
-        <nav className='flex justify-between p-5 border'>
-            <ul className='flex gap-4'>
-                <li>  <Link href='/'>Home</Link> </li>
-                <li>  <Link href='/destinations'>Destination</Link> </li>
-                <li>  <Link href='/booking'>My Bookings</Link> </li>
-                <li>  <Link href='/add-destination'>Add Destination</Link> </li>
-            </ul>
+        <nav className="fixed top-0 left-0 w-full border bg-white">
+            <div className="container mx-auto flex justify-between items-center p-5">
 
-            <div>
+                <ul className='flex gap-4'>
+                    <li><Link href='/'>Home</Link></li>
+                    <li><Link href='/destinations'>Destination</Link></li>
+                    <li><Link href='/booking'>My Bookings</Link></li>
+                    <li><Link href='/add-destination'>Add Destination</Link></li>
+                </ul>
+
                 <Image
                     src={'/assets/Wanderlast.png'}
                     height={150}
                     width={150}
                     alt='logo'
                 />
-            </div>
 
-     
                 <ul className='flex gap-4'>
-                    <li>  <Link href='/profile'>Profile</Link> </li>
-                    <li>  <Link href='/signIn'>Sign In</Link> </li>
-                    <li>  <Link href='/login'>Login</Link> </li>
-    
+                    <li><Link href='/profile'>Profile</Link></li>
+                    <li><Link href='/signIn'>Sign In</Link></li>
+                    <li><Link href='/login'>Login</Link></li>
                 </ul>
-       
+
+            </div>
         </nav>
     )
 }

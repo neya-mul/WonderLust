@@ -7,13 +7,13 @@ export default async function Destinations() {
     console.log(destinations);
 
     return (
-        <div>
-            <div>
-                <h1>Explore All Destinations</h1>
+        <div className='container mx-auto mt-25'>
+            <div className='my-10'>
+                <h1 className='text-6xl'>Explore All Destinations</h1>
                 <p>Find your perfect travel experience from our curated collection</p>
             </div>
 
-            <div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {
                     destinations.map((destination, ind) => <DestinationCard key={ind} destination={destination}></DestinationCard>)
                 }
