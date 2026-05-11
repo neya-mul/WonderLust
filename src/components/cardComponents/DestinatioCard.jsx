@@ -1,10 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { IoLocationOutline } from 'react-icons/io5'
 import { MdArrowOutward } from 'react-icons/md'
 
 export default function DestinationCard({ destination }) {
-  const { destinationName, country, category, price, duration, departureDate, imageUrl, description } = destination
+  const { _id, destinationName, country, category, price, duration, departureDate, imageUrl, description } = destination
   return (
     <div className='max-w-96 mx-auto border'>
       <Image src={imageUrl}
@@ -24,7 +25,12 @@ export default function DestinationCard({ destination }) {
         </div>
 
         <p>{duration}</p>
-        <button className='flex items-center gap-2 text-blue-400'>Book Now <MdArrowOutward /></button>
+        <Link href={`/destinations/${_id}`}>
+          <button className="flex items-center gap-2 text-blue-400">
+            Book Now
+            <MdArrowOutward />
+          </button>
+        </Link>
       </div>
 
     </div>
