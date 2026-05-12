@@ -1,22 +1,24 @@
 "use client";
 
-import { Envelope } from "@gravity-ui/icons";
+
 import {
-  Button,
-  FieldError,
-  Input,
-  Label,
-  ListBox,
-  Modal,
-  Select,
-  Surface,
-  TextArea,
-  TextField,
+    Button,
+    FieldError,
+    Input,
+    Label,
+    ListBox,
+    Modal,
+    Select,
+    Surface,
+    TextArea,
+    TextField,
 } from "@heroui/react";
 
 import { BiEdit } from "react-icons/bi";
 
-export function EditPage() {
+export function EditPage({ destination }) {
+    const { _id, destinationName, country, category, price, duration, departureDate, imageUrl, description } = destination
+
     const submit = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
@@ -39,13 +41,13 @@ export function EditPage() {
             <Button varient='outline' className='flex items-center rounded-xl my-5'> <BiEdit /> Edit</Button>
             <Modal.Backdrop>
                 <Modal.Container placement="auto">
-                    <Modal.Dialog className="sm:max-w-md">
+                    <Modal.Dialog className="sm:max-w-md lg:w-full">
                         <Modal.CloseTrigger />
                         <Modal.Header>
                             <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-                                <Envelope className="size-5" />
+                                <BiEdit className="size-5" />
                             </Modal.Icon>
-                            <Modal.Heading>Contact Us</Modal.Heading>
+                            <Modal.Heading>Edit</Modal.Heading>
 
                         </Modal.Header>
                         <Modal.Body className="p-6">
@@ -181,7 +183,7 @@ export function EditPage() {
                                         className=" rounded-none w-full bg-cyan-500 text-white"
                                     >
                                         {/* {isPending ? "Adding Package..." : "Add Travel Package"} */}
-                                        add destination
+                                        Save
                                     </Button>
                                 </form>
                             </Surface>
@@ -190,7 +192,7 @@ export function EditPage() {
                             <Button slot="close" variant="secondary">
                                 Cancel
                             </Button>
-                            <Button slot="close">Send Message</Button>
+                            <Button slot="close">Save</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal.Container>

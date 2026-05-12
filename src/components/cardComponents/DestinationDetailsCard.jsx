@@ -14,7 +14,7 @@ export default function DestinationDetailsCard({ destination }) {
         <div className='max-w-[900px]  my-5 rounded-2xl w-full'>
 
             <div className='flex justify-end'>
-                <EditPage></EditPage>
+                <EditPage destination={destination}></EditPage>
             </div>
 
             <div>
