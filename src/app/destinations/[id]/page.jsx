@@ -10,7 +10,7 @@ export default async function Details({ params }) {
 
 
   return (
-    <div className='min-h-screen pt-20 flex justify-center items-center'>
+    <div className='min-h-screen border pt-20 flex justify-center items-center'>
 
       <DestinationDetailsCard destination={destination}></DestinationDetailsCard>
     </div>
