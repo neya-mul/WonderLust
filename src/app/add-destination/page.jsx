@@ -21,7 +21,7 @@ export default function page() {
 
     }
     return (
-        <div className='max-w-8xl mx-auto'>
+        <div className='max-w-8xl mx-auto pt-20'>
             <form
                 onSubmit={submit}
                 className="p-10 space-y-8  mx-auto border  my-10 rounded-2xl"
