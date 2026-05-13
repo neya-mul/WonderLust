@@ -24,16 +24,16 @@ export function EditPage({ destination }) {
         const formData = new FormData(e.currentTarget)
         const destination = Object.fromEntries(formData.entries())
 
-        console.log(destination);
-        const res = await fetch('http://localhost:5000/destination', {
-            method: 'POST',
+        // console.log(destination);
+        const res = await fetch(`http://localhost:5000/destination/${_id}`, {
+            method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(destination)
         })
         const data = await res.json()
-        console.log(data);
+        // console.log(data);
 
     }
     return (
@@ -59,7 +59,7 @@ export function EditPage({ destination }) {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         {/* Destination Name */}
                                         <div className="md:col-span-2">
-                                            <TextField name="destinationName" isRequired>
+                                            <TextField defaultValue={destinationName} name="destinationName" isRequired>
                                                 <Label>Destination Name</Label>
                                                 <Input placeholder="Bali Paradise" className="rounded-2xl" />
                                                 <FieldError />
@@ -67,7 +67,7 @@ export function EditPage({ destination }) {
                                         </div>
 
                                         {/* Country */}
-                                        <TextField name="country" isRequired>
+                                        <TextField defaultValue={country} name="country" isRequired>
                                             <Label>Country</Label>
                                             <Input placeholder="Indonesia" className="rounded-2xl" />
                                             <FieldError />
@@ -76,7 +76,7 @@ export function EditPage({ destination }) {
                                         {/* Category - Updated Select Component */}
                                         <div>
                                             <Select
-
+                                                defaultValue={category}
                                                 name="category"
                                                 isRequired
                                                 className="w-full"
@@ -119,7 +119,7 @@ export function EditPage({ destination }) {
                                         </div>
 
                                         {/* Price */}
-                                        <TextField name="price" type="number" isRequired>
+                                        <TextField defaultValue={price} name="price" type="number" isRequired>
                                             <Label>Price (USD)</Label>
                                             <Input
                                                 type="number"
@@ -130,7 +130,7 @@ export function EditPage({ destination }) {
                                         </TextField>
 
                                         {/* Duration */}
-                                        <TextField name="duration" isRequired>
+                                        <TextField defaultValue={duration} name="duration" isRequired>
                                             <Label>Duration</Label>
                                             <Input
                                                 placeholder="7 Days / 6 Nights"
@@ -141,7 +141,7 @@ export function EditPage({ destination }) {
 
                                         {/* Departure Date */}
                                         <div className="md:col-span-2">
-                                            <TextField name="departureDate" type="date" isRequired>
+                                            <TextField defaultValue={departureDate} name="departureDate" type="date" isRequired>
                                                 <Label>Departure Date</Label>
                                                 <Input type="date" className="rounded-2xl" />
                                                 <FieldError />
@@ -150,7 +150,7 @@ export function EditPage({ destination }) {
 
                                         {/* Image URL - Removed preview */}
                                         <div className="md:col-span-2">
-                                            <TextField name="imageUrl" isRequired>
+                                            <TextField defaultValue={imageUrl} name="imageUrl" isRequired>
                                                 <Label>Image URL</Label>
                                                 <Input
                                                     type="url"
@@ -163,7 +163,7 @@ export function EditPage({ destination }) {
 
                                         {/* Description */}
                                         <div className="md:col-span-2">
-                                            <TextField name="description" isRequired>
+                                            <TextField defaultValue={description} name="description" isRequired>
                                                 <Label>Description</Label>
                                                 <TextArea
                                                     placeholder="Describe the travel experience..."
@@ -176,24 +176,14 @@ export function EditPage({ destination }) {
 
                                     {/* Buttons */}
 
-                                    <Button
-                                        type="submit"
-                                        variant="outline"
-                                        // isLoading={isPending}
-                                        className=" rounded-none w-full bg-cyan-500 text-white"
-                                    >
-                                        {/* {isPending ? "Adding Package..." : "Add Travel Package"} */}
-                                        Save
-                                    </Button>
+                                    <Modal.Footer>
+                                       
+                                        <Button type="submit" slot="close">Save</Button>
+                                    </Modal.Footer>
                                 </form>
                             </Surface>
                         </Modal.Body>
-                        <Modal.Footer>
-                            <Button slot="close" variant="secondary">
-                                Cancel
-                            </Button>
-                            <Button slot="close">Save</Button>
-                        </Modal.Footer>
+
                     </Modal.Dialog>
                 </Modal.Container>
             </Modal.Backdrop>
