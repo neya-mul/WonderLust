@@ -23,7 +23,7 @@ export default function Navbar() {
 
                 <ul className='flex gap-4'>
                     <li><Link href='/profile'>Profile</Link></li>
-                    <li><Link href='/signIn'>Sign In</Link></li>
+                    <li><Link href='/signUp'>Sign Up</Link></li>
                     <li><Link href='/login'>Login</Link></li>
                 </ul>
 
