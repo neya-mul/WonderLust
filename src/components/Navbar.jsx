@@ -1,8 +1,18 @@
+'use client'
+import { authClient } from '@/lib/auth-client'
+import { Button } from '@heroui/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { CgProfile } from 'react-icons/cg'
 
 export default function Navbar() {
+    const { data: session } = authClient.useSession()
+    // console.log(session);
+    const user = session?.user
+    console.log(user)
+
+
     return (
         <nav className="fixed top-0 left-0 w-full border bg-white">
             <div className="container mx-auto flex justify-between items-center p-5">
@@ -21,10 +31,14 @@ export default function Navbar() {
                     alt='logo'
                 />
 
-                <ul className='flex gap-4'>
-                    <li><Link href='/profile'>Profile</Link></li>
-                    <li><Link href='/signUp'>Sign Up</Link></li>
-                    <li><Link href='/login'>Login</Link></li>
+                <ul className='flex gap-4 items-center'>
+                    {user && <span>Hello :<strong>{user.name}</strong> </span>}
+                    {user && <li><Link href='/profile'>Profile</Link></li>}
+                    {!user && <li><CgProfile /></li>}
+                    {!user && <li><Link href='/signUp'>Sign Up</Link></li>}
+                    {!user && <li><Link href='/login'>Login</Link></li>}
+                    {user && <Link href='/login'><Button>Log Out</Button></Link>}
+
                 </ul>
 
             </div>
