@@ -1,53 +1,45 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
-import { Check, ArrowRotateLeft } from "@gravity-ui/icons";
+import { ArrowRotateLeft, Check } from "@gravity-ui/icons"
 import {
     Button,
-    Description,
     FieldError,
     Form,
     Input,
     Label,
     TextField,
-} from "@heroui/react";
+} from "@heroui/react"
 import { router } from "better-auth/api";
 import Link from "next/link";
+import React from 'react'
 
-export default function SignUp() {
-
+export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const name = e.target.name.value
         const email = e.target.email.value
-        const image = e.target.image.value
         const password = e.target.password.value
 
 
 
 
+        const { data, error } = await authClient.signIn.email({
 
-        const { data, error } = await authClient.signUp.email({
-            name: name, // required
             email: email, // required
             password: password, // required
-            image: image,
-            callbackURL: "/login",
+            callbackURL: "/",
         });
 
-        // console.log(data);
         if (error) {
             alert(error.message)
         }
         else{
-            alert("Sign Up success");
-            router.push('/login')
+            alert('Login success')
+            router.push('/')
         }
 
-        // API call here
-    };
-
+    }
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-200 flex items-center justify-center px-4">
             <Form
@@ -57,26 +49,13 @@ export default function SignUp() {
                 {/* Heading */}
                 <div className="text-center space-y-2">
                     <h1 className="text-3xl font-bold text-slate-800">
-                        Create Account
+                        Welcome Back
                     </h1>
+
                     <p className="text-sm text-slate-500">
-                        Fill in your information to sign up
+                        Login to your account
                     </p>
                 </div>
-
-                {/* Name */}
-                <TextField isRequired name="name" type="text">
-                    <Label className="mb-1 text-sm font-medium text-slate-700">
-                        Full Name
-                    </Label>
-
-                    <Input
-                        placeholder="Enter your full name"
-                        className="w-full"
-                    />
-
-                    <FieldError />
-                </TextField>
 
                 {/* Email */}
                 <TextField isRequired name="email" type="email">
@@ -86,20 +65,6 @@ export default function SignUp() {
 
                     <Input
                         placeholder="Enter your email"
-                        className="w-full"
-                    />
-
-                    <FieldError />
-                </TextField>
-
-                {/* Image URL */}
-                <TextField isRequired name="image" type="url">
-                    <Label className="mb-1 text-sm font-medium text-slate-700">
-                        Profile Image URL
-                    </Label>
-
-                    <Input
-                        placeholder="https://example.com/image.jpg"
                         className="w-full"
                     />
 
@@ -122,11 +87,6 @@ export default function SignUp() {
                         className="w-full"
                     />
 
-                    <Description className="text-xs text-slate-500">
-                        Must contain at least 8 characters, 1 uppercase letter,
-                        and 1 number.
-                    </Description>
-
                     <FieldError />
                 </TextField>
 
@@ -138,7 +98,7 @@ export default function SignUp() {
                         className="flex-1 font-semibold"
                     >
                         <Check />
-                        Sign Up
+                        Login
                     </Button>
 
                     <Button
@@ -153,12 +113,12 @@ export default function SignUp() {
 
                 {/* Footer */}
                 <p className="text-center text-sm text-slate-500 pt-2">
-                    Already have an account?
-                    <Link href='/login' className="ml-1 text-blue-400 cursor-pointer font-semibold text-primary hover:underline">
-                        Login
+                    Don&apos;t have an account?
+                    <Link href='/signUp' className="ml-1 text-blue-400 cursor-pointer font-semibold text-primary hover:underline">
+                        Sign Up
                     </Link>
                 </p>
             </Form>
         </div>
-    );
+    )
 }
