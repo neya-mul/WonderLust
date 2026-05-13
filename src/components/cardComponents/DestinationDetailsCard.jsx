@@ -6,6 +6,7 @@ import { BiEdit } from 'react-icons/bi'
 import { IoLocationOutline } from 'react-icons/io5'
 import { MdArrowOutward } from 'react-icons/md'
 import { EditPage } from '../EditPage'
+import { Alert } from '../Alert'
 
 export default function DestinationDetailsCard({ destination }) {
     const { _id, destinationName, country, category, price, duration, departureDate, imageUrl, description } = destination
@@ -13,8 +14,9 @@ export default function DestinationDetailsCard({ destination }) {
     return (
         <div className='max-w-[900px]  my-5 rounded-2xl w-full'>
 
-            <div className='flex justify-end'>
+            <div className='flex justify-end items-center gap-3'>
                 <EditPage destination={destination}></EditPage>
+                <Alert destination={destination}></Alert>
             </div>
 
             <div>
