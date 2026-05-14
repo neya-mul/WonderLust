@@ -25,8 +25,8 @@ export default function DestinationDetailsCard({ destination }) {
                     className='w-full rounded-2xl mb-10'
                     src={imageUrl}
                     alt={destinationName}
-                    width={600}
-                    height={200}
+                    width={500}
+                    height={100}
                 />
             </div>
 
@@ -51,7 +51,7 @@ export default function DestinationDetailsCard({ destination }) {
 
                     <div>
                         <p><span className='text-2xl'>{price}</span>/person</p>
-                        <BookingCard></BookingCard>
+                        <BookingCard destination={destination}></BookingCard>
                     </div>
 
                 </div>

@@ -20,11 +20,11 @@ export default function Navbar() {
     const { data: session } = authClient.useSession()
     // console.log(session);
     const user = session?.user
-    console.log(user)
+    // console.log(user)
 
 
     return (
-        <nav className="fixed top-0 left-0 w-full border bg-white">
+        <nav className="fixed top-0 left-0 z-90 w-full border bg-white">
             <div className="container mx-auto flex justify-between items-center p-5">
 
                 <ul className='flex gap-4'>
