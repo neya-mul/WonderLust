@@ -12,9 +12,9 @@ export default function BookingCard({ destination }) {
   // console.log(user);
   const bookingButton = async () => {
     const info = {
-      userId: user.id,
-      userName: user.name,
-      userEmail: user.email,
+      userId: user?.id,
+      userName: user?.name,
+      userEmail: user?.email,
       departureDate: new Date(departureDate),
       destinationName,
       country,
@@ -33,7 +33,7 @@ export default function BookingCard({ destination }) {
       body: JSON.stringify(info)
     })
     const data = await res.json()
-    // console.log(data);
+    console.log(data);
 
   }
 
