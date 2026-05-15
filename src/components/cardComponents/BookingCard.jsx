@@ -22,7 +22,8 @@ export default function BookingCard({ destination }) {
       price,
       duration,
       description,
-      _id
+      _id,
+      imageUrl
     }
     const res = await fetch('http://localhost:5000/booking', {
       method: 'POST',
@@ -32,7 +33,7 @@ export default function BookingCard({ destination }) {
       body: JSON.stringify(info)
     })
     const data = await res.json()
-    console.log(data);
+    // console.log(data);
 
   }
 
