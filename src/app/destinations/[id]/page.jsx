@@ -3,7 +3,11 @@ import React from 'react'
 
 export default async function Details({ params }) {
   const { id } = await params
-  const res = await fetch(`http://localhost:5000/destination/${id}`)
+  const res = await fetch(`http://localhost:5000/destination/${id}`,{
+    headers: {
+      authorization: 'logged in'
+    }
+  })
   const destination = await res.json()
   console.log(destination);
 

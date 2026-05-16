@@ -7,7 +7,7 @@ export default async function Destinations() {
     console.log(destinations);
 
     return (
-        <div className='container mx-auto mt-25'>
+        <div className='container mx-auto my-25'>
             <div className='my-10'>
                 <h1 className='text-6xl'>Explore All Destinations</h1>
                 <p>Find your perfect travel experience from our curated collection</p>

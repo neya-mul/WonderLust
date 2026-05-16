@@ -12,9 +12,13 @@ import {
 } from "@heroui/react"
 import { router } from "better-auth/api";
 import Link from "next/link";
-import React from 'react'
+import React, { useState } from 'react'
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 export default function Login() {
+    const [showPass, setShowPass] = useState(true)
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -34,7 +38,7 @@ export default function Login() {
         if (error) {
             alert(error.message)
         }
-        else{
+        else {
             alert('Login success')
             router.push('/')
         }
@@ -73,10 +77,11 @@ export default function Login() {
 
                 {/* Password */}
                 <TextField
+                    className={'relative'}
                     isRequired
                     minLength={8}
                     name="password"
-                    type="password"
+                    type={showPass ? 'password' : 'text'}
                 >
                     <Label className="mb-1 text-sm font-medium text-slate-700">
                         Password
@@ -86,6 +91,9 @@ export default function Login() {
                         placeholder="Enter your password"
                         className="w-full"
                     />
+
+                    <span onClick={() => setShowPass(!showPass)} className="absolute top-10 right-2"> {showPass ? <FaRegEye /> : <FaRegEyeSlash />}
+                    </span>
 
                     <FieldError />
                 </TextField>
