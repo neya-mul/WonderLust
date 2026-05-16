@@ -8,7 +8,7 @@ import { MdDelete } from "react-icons/md";
 export function Alert({ destination }) {
     const { _id, destinationName, country, category, price, duration, departureDate, imageUrl, description } = destination
     const deletteButton = async () => {
-        const res = await fetch(`http://localhost:5000/destination/${_id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${_id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

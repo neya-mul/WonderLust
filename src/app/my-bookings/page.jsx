@@ -14,7 +14,7 @@ export default async function MyBooking() {
     const user = session?.user
     // console.log(user);
     
-    const res = await fetch(`http://localhost:5000/booking/${user?.id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`)
     const bookings = await res.json()
     // console.log(data);
 

@@ -9,7 +9,7 @@ export function CancelAlert({ booking , bookingId}) {
     const cancelButton = async()=>{
             // console.log(booking._id);
 
-          const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${bookingId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
