@@ -12,11 +12,11 @@ export default function Navbar() {
         await authClient.signOut({
             fetchOptions: {
                 onSuccess: () => {
-                    router.push("/login"); // redirect to login page
+                    router.push("/login"); 
+                    router.refresh()  
                 },
             },
         });
-        window.location.reload();
     }
     const { data: session } = authClient.useSession()
     // console.log(session);
