@@ -16,7 +16,7 @@ export default function Navbar() {
                 },
             },
         });
-
+        window.location.reload();
     }
     const { data: session } = authClient.useSession()
     // console.log(session);
@@ -43,7 +43,7 @@ export default function Navbar() {
                 />
 
                 <ul className='flex gap-4 items-center'>
-                    {user && <Image src={user.image} alt='name' width={50} height={50} className='rounded-full'/>}
+                    {user && <Image src={user.image} alt='name' width={50} height={50} className='rounded-full' />}
                     {user && <span>Hello :<strong>{user.name}</strong> </span>}
                     {user && <li><Link href='/profile'>Profile</Link></li>}
                     {!user && <li><CgProfile /></li>}
