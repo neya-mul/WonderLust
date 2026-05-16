@@ -1,28 +1,27 @@
 'use client'
 import { authClient } from '@/lib/auth-client'
 import { Button } from '@heroui/react'
-import { router } from 'better-auth/api'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { CgProfile } from 'react-icons/cg'
 
 export default function Navbar() {
+    const router = useRouter()
+    const { data: session } = authClient.useSession()
+    const user = session?.user
+
     const logOutButton = async () => {
         await authClient.signOut({
             fetchOptions: {
                 onSuccess: () => {
-                    router.push("/login"); 
-                    router.refresh()  
+                    router.push("/login");
+                    router.refresh();
                 },
             },
         });
     }
-    const { data: session } = authClient.useSession()
-    // console.log(session);
-    const user = session?.user
-    // console.log(user)
-
 
     return (
         <nav className="fixed top-0 left-0 z-90 w-full border bg-white">
@@ -43,14 +42,13 @@ export default function Navbar() {
                 />
 
                 <ul className='flex gap-4 items-center'>
-                    {user && <Image src={user.image} alt='name' width={50} height={50} className='rounded-full' />}
-                    {user && <span>Hello :<strong>{user.name}</strong> </span>}
+                    {user && <Image src={user.image} alt={user.name} width={50} height={50} className='rounded-full' />}
+                    {user && <span>Hello: <strong>{user.name}</strong></span>}
                     {user && <li><Link href='/profile'>Profile</Link></li>}
                     {!user && <li><CgProfile /></li>}
                     {!user && <li><Link href='/signUp'>Sign Up</Link></li>}
                     {!user && <li><Link href='/login'>Login</Link></li>}
-                    {user && <Link href='/login'><Button onClick={logOutButton}>Log Out</Button></Link>}
-
+                    {user && <Button onClick={logOutButton}>Log Out</Button>}  {/* ✅ fixed */}
                 </ul>
 
             </div>
